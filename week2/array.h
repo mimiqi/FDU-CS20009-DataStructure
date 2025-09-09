@@ -1,5 +1,6 @@
 #ifndef ARRAY_H
 #define ARRAY_H
+#include <iostream>
 
 const int DefaultSize = 30;
 
@@ -14,10 +15,15 @@ template<class Type> class Array{
     int Length() const;//取数组长度
     void Resize(int newSize);//修改数组长度
     void print() const;
+    
+    template <class U>
+    friend std::ostream& operator<<(std::ostream& os, const Array<U>& array);
+    
     private:
     Type *elements;//动态数组
     int ArraySize;//数组元素个数
     void GetArray();//动态分配数组的存储空间
+    
 };
 
 
