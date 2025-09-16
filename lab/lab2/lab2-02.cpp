@@ -103,7 +103,7 @@ int SeqList<Type>::Remove(int i)
 }
 
 template <class Type>
-int SeqList<Type>::removeDuplicates()
+int SeqList<Type>::removeDuplicates()//时间O(n) 空间O(1)
 {
     // todo: 完善方法，成功返回顺序表唯一元素的数量
     if(this->last <= 0) return 0;

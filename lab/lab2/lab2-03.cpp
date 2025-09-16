@@ -112,7 +112,7 @@ void Polynomial::Print() const
     std::cout << std::endl; // 换行
 }
 
-Polynomial *Polynomial::Poly_Mul(Polynomial poly)
+Polynomial *Polynomial::Poly_Mul(Polynomial poly)//时间O(m²n²) 空间O(m*n)
 {
     Polynomial *result = new Polynomial();
     // todo: 完善方法，返回两多项式相乘的有序多项式

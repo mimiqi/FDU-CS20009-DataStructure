@@ -68,7 +68,7 @@ void SeqList<Type>::PrintAll()
 }
 
 template <class Type>
-int SeqList<Type>::Find(Type x) const
+int SeqList<Type>::Find(Type x) const//时间O(n) 空间O(1)
 {
     // here is your code
     for(int i = 0; i <= this->last; ++i){
@@ -80,7 +80,7 @@ int SeqList<Type>::Find(Type x) const
 }
 
 template <class Type>
-int SeqList<Type>::Insert(Type x, int i)
+int SeqList<Type>::Insert(Type x, int i)//时间O(n) 空间O(1)
 {
     // here is your code
     if(i < 0 || i > this->last + 1){
@@ -109,7 +109,7 @@ int SeqList<Type>::Insert(Type x, int i)
 }
 
 template <class Type>
-int SeqList<Type>::Remove(int i)
+int SeqList<Type>::Remove(int i)//时间O(n) 空间O(1)
 {
     // here is your code
     if(i < 0 || i > this->last){
@@ -125,7 +125,7 @@ int SeqList<Type>::Remove(int i)
 }
 
 template <class Type>
-int SeqList<Type>::RemoveBetween(Type x, Type y)
+int SeqList<Type>::RemoveBetween(Type x, Type y)//时间O(n) 空间O(n)
 {
     // here is your code
     if(x > y){
