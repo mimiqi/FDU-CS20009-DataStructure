@@ -107,26 +107,55 @@ void List<Type>::Initialize(const Type arr[], int size)
 template <class Type>
 void List<Type>::Insert(const Type &value)//时间O(n) 空间O(1)
 {
-    if(first ==nullptr){
+    if(first == nullptr){
         first = new LinkNode<Type>(value);
         first->link = first;
         return;
     }
-    // here is your code
-    LinkNode<Type> *cur;
-    LinkNode<Type> *next;
+
+    LinkNode<Type> *cur = first;
+    LinkNode<Type> *next = first->link;
+
+    // 找到链表中的最大值和最小值位置
+    LinkNode<Type> *maxNode = first;
+    LinkNode<Type> *minNode = first;
+    LinkNode<Type> *temp = first->link;
+    while(temp != first) {
+        if(temp->data > maxNode->data) maxNode = temp;
+        if(temp->data < minNode->data) minNode = temp;
+        temp = temp->link;
+    }
+
+    // 如果插入值小于等于最小值，在最小值前插入
+    if(value <= minNode->data) {
+        while(cur->link != minNode) cur = cur->link;
+        LinkNode<Type> *newNode = new LinkNode<Type>(value);
+        cur->link = newNode;
+        newNode->link = minNode;
+        if(minNode == first) first = newNode;
+        return;
+    }
+
+    // 如果插入值大于等于最大值，在最大值后插入
+    if(value >= maxNode->data) {
+        LinkNode<Type> *newNode = new LinkNode<Type>(value);
+        newNode->link = maxNode->link;
+        maxNode->link = newNode;
+        return;
+    }
+
+    // 在中间位置插入
     cur = first;
-    next = cur->link;
-    while(next != first){
-        if(cur->data <= value && (next->data > value || next->data < cur->data)){
-            break;
+    do {
+        next = cur->link;
+        if(cur->data <= value && value <= next->data) {
+            LinkNode<Type> *newNode = new LinkNode<Type>(value);
+            newNode->link = next;
+            cur->link = newNode;
+            return;
         }
         cur = next;
-        next = next->link;
-    }
-    LinkNode<Type> *newNode = new LinkNode<Type>(value);
-    cur->link = newNode;
-    newNode->link = next;
+    } while(cur != first);
 }
 
 int main()
@@ -149,6 +178,11 @@ int main()
     myList.Print();
     
 
+    int b[] = {3, 4, 1};
+    myList.Initialize(b, 3);
+    myList.Print();
+    myList.Insert(0);
+    myList.Print();
 
     /*
     int *a = new int[0];

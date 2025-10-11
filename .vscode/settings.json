@@ -1,5 +1,7 @@
 {
     "files.associations": {
+        "*.v": "verilog",
+        "*.sv": "systemverilog",
         "iostream": "cpp",
         "array": "cpp",
         "deque": "cpp",
@@ -52,7 +54,8 @@
         "text_encoding": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "cstring": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
