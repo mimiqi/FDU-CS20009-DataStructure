@@ -10,7 +10,7 @@ int subsequenceMatching_BF(std::string &s, std::vector<std::string> &words){//æ—
         int s_len = s.length();
         int w_len = it->length();
         if(w_len > s_len){
-            ++it;+
+            ++it;
         }
         else{
             bool flag = false;
